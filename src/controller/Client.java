@@ -28,8 +28,8 @@ public class Client {
     public static DashboardFrm dashboardFrm;
     public static DeleteAccountFrm deleteAccountFrm;
     public static ChangePasswordFrm changePasswordFrm;
-    public static FloorSearchFrm roomSearchFrm;
-    public static RoomSearchFrm floorSearchFrm;
+    public static FloorSearchFrm floorSearchFrm;
+    public static RoomSearchFrm roomSearchFrm;
 
     public Client() {
         try {
@@ -53,13 +53,13 @@ public class Client {
                 registerFrm = new RegisterFrm();
                 registerFrm.setVisible(true);
                 break;
-            case FLOOR_SEARCH:
-                floorSearchFrm = new RoomSearchFrm();
-                floorSearchFrm.setVisible(true);
-                break;
             case ROOM_SEARCH:
-                roomSearchFrm = new FloorSearchFrm();
+                roomSearchFrm = new RoomSearchFrm();
                 roomSearchFrm.setVisible(true);
+                break;
+            case FLOOR_SEARCH:
+                floorSearchFrm = new FloorSearchFrm();
+                floorSearchFrm.setVisible(true);
                 break;
             default:
                 throw new AssertionError();
@@ -76,17 +76,17 @@ public class Client {
             case REGISTER:
                 registerFrm = new RegisterFrm();
                 registerFrm.setLocation(x, y);
-                registerFrm.setVisible(true);
-                break;
-            case FLOOR_SEARCH:
-                floorSearchFrm = new RoomSearchFrm();
-                floorSearchFrm.setLocation(x, y);
-                floorSearchFrm.setVisible(true);
+                  registerFrm.setVisible(true);
                 break;
             case ROOM_SEARCH:
-                roomSearchFrm = new FloorSearchFrm();
+                roomSearchFrm = new RoomSearchFrm();
                 roomSearchFrm.setLocation(x, y);
                 roomSearchFrm.setVisible(true);
+                break;
+            case FLOOR_SEARCH:
+                floorSearchFrm = new FloorSearchFrm();
+                floorSearchFrm.setLocation(x, y);
+                floorSearchFrm.setVisible(true);
                 break;
             default:
                 throw new AssertionError();
@@ -107,13 +107,13 @@ public class Client {
                 changePasswordFrm = new ChangePasswordFrm(adminName);
                 changePasswordFrm.setVisible(true);
                 break;
-            case FLOOR_SEARCH:
-                floorSearchFrm = new RoomSearchFrm(adminName);
-                floorSearchFrm.setVisible(true);
-                break;
             case ROOM_SEARCH:
-                roomSearchFrm = new FloorSearchFrm(adminName);
+                roomSearchFrm = new RoomSearchFrm(adminName);
                 roomSearchFrm.setVisible(true);
+                break;
+            case FLOOR_SEARCH:
+                floorSearchFrm = new FloorSearchFrm(adminName);
+                floorSearchFrm.setVisible(true);
                 break;
             default:
                 throw new AssertionError();
@@ -137,15 +137,15 @@ public class Client {
                 changePasswordFrm.setLocation(x, y);
                 changePasswordFrm.setVisible(true);
                 break;
-            case FLOOR_SEARCH:
-                floorSearchFrm = new RoomSearchFrm(adminName);
-                floorSearchFrm.setLocation(x, y);
-                floorSearchFrm.setVisible(true);
-                break;
             case ROOM_SEARCH:
-                roomSearchFrm = new FloorSearchFrm(adminName);
+                roomSearchFrm = new RoomSearchFrm(adminName);
                 roomSearchFrm.setLocation(x, y);
                 roomSearchFrm.setVisible(true);
+                break;
+            case FLOOR_SEARCH:
+                floorSearchFrm = new FloorSearchFrm(adminName);
+                floorSearchFrm.setLocation(x, y);
+                floorSearchFrm.setVisible(true);
                 break;
             default:
                 throw new AssertionError();
@@ -169,11 +169,11 @@ public class Client {
             case CHANGEPASSSWORD:
                 changePasswordFrm.dispose();
                 break;
-            case FLOOR_SEARCH:
-                floorSearchFrm.dispose();
-                break;
             case ROOM_SEARCH:
                 roomSearchFrm.dispose();
+                break;
+            case FLOOR_SEARCH:
+                floorSearchFrm.dispose();
                 break;
             default:
                 throw new AssertionError();

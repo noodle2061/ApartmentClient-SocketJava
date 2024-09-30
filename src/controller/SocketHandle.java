@@ -97,6 +97,13 @@ public class SocketHandle implements Runnable {
                     Client.changePasswordFrm.showErr("Nhập sai mật khẩu!!");
                 }
                 
+                else if (receivedMessage.startsWith("open-search-room-frm-success")) {
+                    Client.roomSearchFrm.updateTable(receivedMessage);
+                }
+                
+               else if (receivedMessage.startsWith("return-room-search")) {
+                   Client.roomSearchFrm.updateTable(receivedMessage);
+               }
             }
         } catch (Exception e) {
             System.out.println(e);

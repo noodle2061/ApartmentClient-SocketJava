@@ -172,6 +172,7 @@ public class DashboardFrm extends javax.swing.JFrame {
         int y = getLocation().y;
         Client.CloseView(Client.View.DASHBOARD);
         Client.OpenView(Client.View.ROOM_SEARCH, adminName, x, y);
+        Client.socketHandle.write("open-search-room-frm");
     }//GEN-LAST:event_findRoomButtonActionPerformed
 
     /**

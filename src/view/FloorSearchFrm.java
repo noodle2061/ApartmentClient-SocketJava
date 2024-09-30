@@ -81,7 +81,7 @@ public class FloorSearchFrm extends javax.swing.JFrame {
         // TODO add your handling code here:
         int x = getLocation().x;
         int y = getLocation().y;
-        Client.CloseView(Client.View.ROOM_SEARCH);
+        Client.CloseView(Client.View.FLOOR_SEARCH);
         Client.OpenView(Client.View.DASHBOARD, adminName, x, y);
     }//GEN-LAST:event_backButtonActionPerformed
 
