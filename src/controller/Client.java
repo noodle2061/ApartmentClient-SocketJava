@@ -10,10 +10,10 @@ import java.net.UnknownHostException;
 import view.ChangePasswordFrm;
 import view.DashboardFrm;
 import view.DeleteAccountFrm;
-import view.FloorSearchFrm;
+import view.RoomSearchFrm;
 import view.LoginFrm;
 import view.RegisterFrm;
-import view.RoomSearchFrm;
+import view.FloorSearchFrm;
 
 /**
  *
@@ -28,8 +28,8 @@ public class Client {
     public static DashboardFrm dashboardFrm;
     public static DeleteAccountFrm deleteAccountFrm;
     public static ChangePasswordFrm changePasswordFrm;
-    public static RoomSearchFrm roomSearchFrm;
-    public static FloorSearchFrm floorSearchFrm;
+    public static FloorSearchFrm roomSearchFrm;
+    public static RoomSearchFrm floorSearchFrm;
 
     public Client() {
         try {
@@ -54,11 +54,11 @@ public class Client {
                 registerFrm.setVisible(true);
                 break;
             case FLOOR_SEARCH:
-                floorSearchFrm = new FloorSearchFrm();
+                floorSearchFrm = new RoomSearchFrm();
                 floorSearchFrm.setVisible(true);
                 break;
             case ROOM_SEARCH:
-                roomSearchFrm = new RoomSearchFrm();
+                roomSearchFrm = new FloorSearchFrm();
                 roomSearchFrm.setVisible(true);
                 break;
             default:
@@ -79,12 +79,12 @@ public class Client {
                 registerFrm.setVisible(true);
                 break;
             case FLOOR_SEARCH:
-                floorSearchFrm = new FloorSearchFrm();
+                floorSearchFrm = new RoomSearchFrm();
                 floorSearchFrm.setLocation(x, y);
                 floorSearchFrm.setVisible(true);
                 break;
             case ROOM_SEARCH:
-                roomSearchFrm = new RoomSearchFrm();
+                roomSearchFrm = new FloorSearchFrm();
                 roomSearchFrm.setLocation(x, y);
                 roomSearchFrm.setVisible(true);
                 break;
@@ -108,11 +108,11 @@ public class Client {
                 changePasswordFrm.setVisible(true);
                 break;
             case FLOOR_SEARCH:
-                floorSearchFrm = new FloorSearchFrm(adminName);
+                floorSearchFrm = new RoomSearchFrm(adminName);
                 floorSearchFrm.setVisible(true);
                 break;
             case ROOM_SEARCH:
-                roomSearchFrm = new RoomSearchFrm(adminName);
+                roomSearchFrm = new FloorSearchFrm(adminName);
                 roomSearchFrm.setVisible(true);
                 break;
             default:
@@ -138,12 +138,12 @@ public class Client {
                 changePasswordFrm.setVisible(true);
                 break;
             case FLOOR_SEARCH:
-                floorSearchFrm = new FloorSearchFrm(adminName);
+                floorSearchFrm = new RoomSearchFrm(adminName);
                 floorSearchFrm.setLocation(x, y);
                 floorSearchFrm.setVisible(true);
                 break;
             case ROOM_SEARCH:
-                roomSearchFrm = new RoomSearchFrm(adminName);
+                roomSearchFrm = new FloorSearchFrm(adminName);
                 roomSearchFrm.setLocation(x, y);
                 roomSearchFrm.setVisible(true);
                 break;

@@ -23,7 +23,6 @@ public class DeleteAccountFrm extends javax.swing.JFrame {
 
     public DeleteAccountFrm(String adminName) {
         this.adminName = adminName;
-        
         initComponents();
     }
     
@@ -40,18 +39,16 @@ public class DeleteAccountFrm extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        nameOfAdmin = new javax.swing.JLabel();
         passValue = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
         ConfirmButton = new javax.swing.JButton();
         err = new javax.swing.JLabel();
         BackButton = new javax.swing.JToggleButton();
+        jLabel2 = new javax.swing.JLabel();
 
         jLabel1.setText("admin: ");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        nameOfAdmin.setText("admin: ");
 
         jLabel3.setText("Nhập lại mật khẩu:");
 
@@ -69,32 +66,36 @@ public class DeleteAccountFrm extends javax.swing.JFrame {
             }
         });
 
+        jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel2.setText("Xác nhận xóa tài khoản");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(err, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(nameOfAdmin))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(37, 37, 37)
-                            .addComponent(jLabel3)
-                            .addGap(28, 28, 28)
-                            .addComponent(passValue, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(28, 28, 28)
+                        .addComponent(passValue, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(52, 52, 52))
                     .addComponent(ConfirmButton))
-                .addContainerGap(56, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(67, 67, 67))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(nameOfAdmin)
-                .addGap(39, 39, 39)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(68, Short.MAX_VALUE)
+                .addComponent(jLabel2)
+                .addGap(18, 18, 18)
                 .addComponent(err, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -104,10 +105,8 @@ public class DeleteAccountFrm extends javax.swing.JFrame {
                 .addComponent(ConfirmButton)
                 .addGap(18, 18, 18)
                 .addComponent(BackButton)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addGap(58, 58, 58))
         );
-
-        nameOfAdmin.setText("admin: " + this.adminName);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -170,8 +169,8 @@ public class DeleteAccountFrm extends javax.swing.JFrame {
     private javax.swing.JButton ConfirmButton;
     private javax.swing.JLabel err;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel nameOfAdmin;
     private javax.swing.JPasswordField passValue;
     // End of variables declaration//GEN-END:variables
 

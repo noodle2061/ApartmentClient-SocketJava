@@ -58,18 +58,18 @@ public class RoomSearchFrm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(28, 28, 28)
                 .addComponent(nameOfAdmin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 218, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 232, Short.MAX_VALUE)
                 .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addGap(20, 20, 20))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(backButton)
-                    .addComponent(nameOfAdmin))
-                .addContainerGap(259, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(nameOfAdmin)
+                    .addComponent(backButton))
+                .addContainerGap(262, Short.MAX_VALUE))
         );
 
         nameOfAdmin.setText("admin: " + this.adminName);
@@ -81,7 +81,7 @@ public class RoomSearchFrm extends javax.swing.JFrame {
         // TODO add your handling code here:
         int x = getLocation().x;
         int y = getLocation().y;
-        Client.CloseView(Client.View.ROOM_SEARCH);
+        Client.CloseView(Client.View.FLOOR_SEARCH);
         Client.OpenView(Client.View.DASHBOARD, adminName, x, y);
     }//GEN-LAST:event_backButtonActionPerformed
 
@@ -110,6 +110,7 @@ public class RoomSearchFrm extends javax.swing.JFrame {
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
             java.util.logging.Logger.getLogger(RoomSearchFrm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
