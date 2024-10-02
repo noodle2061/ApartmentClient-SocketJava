@@ -6,6 +6,7 @@ package view;
 
 import controller.Client;
 import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -18,6 +19,7 @@ public class RoomSearchFrm extends javax.swing.JFrame {
      * Creates new form RoomSearchFrm
      */
     private String adminName;
+    private String tenPhong="", tang="", dienTich="", soNguoi="";
 
     public RoomSearchFrm() {
         initComponents();
@@ -37,10 +39,29 @@ public class RoomSearchFrm extends javax.swing.JFrame {
         model.setRowCount(0);
         String[] lst = s.split("\\$");
         int size = lst.length;
-//        System.out.println("size = " + size);
         for (int i = 1; i < size; i+=4) {
             model.addRow(new Object[]{lst[i], lst[i+1], lst[i+2], lst[i+3]});
         }
+        
+        // Lắng nghe sự kiện chọn hàng để lấy dữ liệu khi người dùng nhấp vào
+    ListSelectionModel selectionModel = roomTable.getSelectionModel();
+    selectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+    selectionModel.addListSelectionListener(e -> {
+        if (!e.getValueIsAdjusting()) {
+            int selectedRow = roomTable.getSelectedRow();
+            if (selectedRow != -1) {
+                // Lấy dữ liệu từ hàng đã chọn
+                tenPhong = (String) roomTable.getValueAt(selectedRow, 0);
+                tang = (String) roomTable.getValueAt(selectedRow, 1);
+                dienTich = (String) roomTable.getValueAt(selectedRow, 2);
+                soNguoi = (String) roomTable.getValueAt(selectedRow, 3);
+
+                // In ra dữ liệu của hàng được chọn
+//                System.out.println("Hàng đã chọn: " + col1 + ", " + col2 + ", " + col3 + ", " + col4);
+                roomName.setText("Bạn đã chọn phòng: " + tenPhong);
+            }
+        }
+    });
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -71,6 +92,9 @@ public class RoomSearchFrm extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         roomTable = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
+        modifyRoomButton = new javax.swing.JButton();
+        roomName = new javax.swing.JLabel();
+        deleteRoomButton = new javax.swing.JButton();
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -138,6 +162,22 @@ public class RoomSearchFrm extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Danh sách phòng:");
 
+        modifyRoomButton.setText("Sửa phòng");
+        modifyRoomButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                modifyRoomButtonActionPerformed(evt);
+            }
+        });
+
+        roomName.setText("Bạn đã chọn phòng:");
+
+        deleteRoomButton.setText("Xóa phòng");
+        deleteRoomButton.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                deleteRoomButtonActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -192,6 +232,14 @@ public class RoomSearchFrm extends javax.swing.JFrame {
                                     .addComponent(jLabel8)
                                     .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(53, 53, 53)
+                .addComponent(roomName)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(deleteRoomButton)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(modifyRoomButton)
+                .addGap(90, 90, 90))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -227,8 +275,13 @@ public class RoomSearchFrm extends javax.swing.JFrame {
                 .addGap(20, 20, 20)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 214, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 172, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 43, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(modifyRoomButton)
+                    .addComponent(roomName)
+                    .addComponent(deleteRoomButton))
+                .addGap(41, 41, 41))
         );
 
         nameOfAdmin.setText("admin: " + this.adminName);
@@ -246,7 +299,7 @@ public class RoomSearchFrm extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        String name = nameOfRoom.getText();;
+        String name = nameOfRoom.getText();
         String areamin = minArea.getText();
         String areamax = maxArea.getText();
         String capacitymin = minCapacity.getText();
@@ -304,6 +357,22 @@ public class RoomSearchFrm extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_floorChooseActionPerformed
 
+    private void deleteRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteRoomButtonActionPerformed
+        // TODO add your handling code here:
+        if (tenPhong.equals("")) {
+            showErr("Hãy chọn phòng để xóa!!");
+            return;
+        }
+        Client.socketHandle.write("delete-room-request$" + tenPhong + "$" + tang);
+    }//GEN-LAST:event_deleteRoomButtonActionPerformed
+
+    private void modifyRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyRoomButtonActionPerformed
+        // TODO add your handling code here:
+        int x = this.getLocation().x;
+        int y = this.getLocation().y;
+        Client.OpenUpdateRoomView(adminName, tenPhong, tang, x, y);
+    }//GEN-LAST:event_modifyRoomButtonActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -342,6 +411,7 @@ public class RoomSearchFrm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
+    private javax.swing.JButton deleteRoomButton;
     private javax.swing.JComboBox<String> floorChoose;
     private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox2;
@@ -358,8 +428,10 @@ public class RoomSearchFrm extends javax.swing.JFrame {
     private javax.swing.JTextField maxCapacity;
     private javax.swing.JTextField minArea;
     private javax.swing.JTextField minCapacity;
+    private javax.swing.JButton modifyRoomButton;
     private javax.swing.JLabel nameOfAdmin;
     private javax.swing.JTextField nameOfRoom;
+    private javax.swing.JLabel roomName;
     private javax.swing.JTable roomTable;
     // End of variables declaration//GEN-END:variables
 

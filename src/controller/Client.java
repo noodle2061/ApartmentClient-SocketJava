@@ -14,6 +14,7 @@ import view.RoomSearchFrm;
 import view.LoginFrm;
 import view.RegisterFrm;
 import view.FloorSearchFrm;
+import view.ModifyRoomFrm;
 
 /**
  *
@@ -30,6 +31,7 @@ public class Client {
     public static ChangePasswordFrm changePasswordFrm;
     public static FloorSearchFrm floorSearchFrm;
     public static RoomSearchFrm roomSearchFrm;
+    public static ModifyRoomFrm modifyRoomFrm;
 
     public Client() {
         try {
@@ -61,11 +63,15 @@ public class Client {
                 floorSearchFrm = new FloorSearchFrm();
                 floorSearchFrm.setVisible(true);
                 break;
+            case MODIFY_ROOM:
+                modifyRoomFrm = new ModifyRoomFrm();
+                modifyRoomFrm.setVisible(true);
+                break;
             default:
                 throw new AssertionError();
         }
     }
-    
+
     public static void OpenView(View viewName, int x, int y) {
         switch (viewName) {
             case LOGIN:
@@ -76,7 +82,7 @@ public class Client {
             case REGISTER:
                 registerFrm = new RegisterFrm();
                 registerFrm.setLocation(x, y);
-                  registerFrm.setVisible(true);
+                registerFrm.setVisible(true);
                 break;
             case ROOM_SEARCH:
                 roomSearchFrm = new RoomSearchFrm();
@@ -88,11 +94,16 @@ public class Client {
                 floorSearchFrm.setLocation(x, y);
                 floorSearchFrm.setVisible(true);
                 break;
+            case MODIFY_ROOM:
+                modifyRoomFrm = new ModifyRoomFrm();
+                modifyRoomFrm.setLocation(x, y);
+                modifyRoomFrm.setVisible(true);
+                break;
             default:
                 throw new AssertionError();
         }
     }
-    
+
     public static void OpenView(View viewName, String adminName) {
         switch (viewName) {
             case DASHBOARD:
@@ -147,11 +158,21 @@ public class Client {
                 floorSearchFrm.setLocation(x, y);
                 floorSearchFrm.setVisible(true);
                 break;
+            case MODIFY_ROOM:
+
+                break;
             default:
                 throw new AssertionError();
         }
     }
-    
+
+    public static void OpenUpdateRoomView(String adminName, String roomName, String floorName, int x, int y) {
+        System.out.println(adminName + " " + roomName + " " + x + " " + y);
+        modifyRoomFrm = new ModifyRoomFrm(adminName, roomName, floorName);
+        modifyRoomFrm.setLocation(x, y);
+        modifyRoomFrm.setVisible(true);
+    }
+
     public static void CloseView(View viewName) {
         switch (viewName) {
             case LOGIN:
@@ -175,6 +196,9 @@ public class Client {
             case FLOOR_SEARCH:
                 floorSearchFrm.dispose();
                 break;
+            case MODIFY_ROOM:
+                modifyRoomFrm.dispose();
+                break;
             default:
                 throw new AssertionError();
         }
@@ -187,7 +211,8 @@ public class Client {
         DELETEACCOUNT,
         CHANGEPASSSWORD,
         FLOOR_SEARCH,
-        ROOM_SEARCH
+        ROOM_SEARCH,
+        MODIFY_ROOM
     }
 
     public static void main(String[] args) {
