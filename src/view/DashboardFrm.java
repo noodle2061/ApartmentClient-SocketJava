@@ -164,6 +164,7 @@ public class DashboardFrm extends javax.swing.JFrame {
         int y = getLocation().y;
         Client.CloseView(Client.View.DASHBOARD);
         Client.OpenView(Client.View.FLOOR_SEARCH, adminName, x, y);
+        Client.socketHandle.write("get-all-floor-request");
     }//GEN-LAST:event_findFloorButtonActionPerformed
 
     private void findRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findRoomButtonActionPerformed

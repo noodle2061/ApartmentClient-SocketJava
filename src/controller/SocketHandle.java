@@ -99,8 +99,16 @@ public class SocketHandle implements Runnable {
                     Client.CloseView(Client.View.MODIFY_ROOM);
                     Client.roomSearchFrm.showErr("Thay đổi thành công!");
                     Client.roomSearchFrm.updateTable(receivedMessage);
+                } else if (receivedMessage.startsWith("get-all-floor-success")) {
+                    Client.floorSearchFrm.updateTable(receivedMessage);
                 }
-                
+                else if (receivedMessage.startsWith("delete-floor-request-success")) {
+                    msg = receivedMessage.split("\\$");
+                    
+                }
+                else if (receivedMessage.startsWith("delete-floor-request-fail")) {
+                    Client.floorSearchFrm.showErr("Mật khẩu nhập sai!");
+                }
             }
         } catch (Exception e) {
             System.out.println(e);

@@ -39,29 +39,29 @@ public class RoomSearchFrm extends javax.swing.JFrame {
         model.setRowCount(0);
         String[] lst = s.split("\\$");
         int size = lst.length;
-        for (int i = 1; i < size; i+=4) {
-            model.addRow(new Object[]{lst[i], lst[i+1], lst[i+2], lst[i+3]});
+        for (int i = 1; i < size; i += 4) {
+            model.addRow(new Object[]{lst[i], lst[i + 1], lst[i + 2], lst[i + 3]});
         }
-        
-        // Lắng nghe sự kiện chọn hàng để lấy dữ liệu khi người dùng nhấp vào
-    ListSelectionModel selectionModel = roomTable.getSelectionModel();
-    selectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-    selectionModel.addListSelectionListener(e -> {
-        if (!e.getValueIsAdjusting()) {
-            int selectedRow = roomTable.getSelectedRow();
-            if (selectedRow != -1) {
-                // Lấy dữ liệu từ hàng đã chọn
-                tenPhong = (String) roomTable.getValueAt(selectedRow, 0);
-                tang = (String) roomTable.getValueAt(selectedRow, 1);
-                dienTich = (String) roomTable.getValueAt(selectedRow, 2);
-                soNguoi = (String) roomTable.getValueAt(selectedRow, 3);
 
-                // In ra dữ liệu của hàng được chọn
+        // Lắng nghe sự kiện chọn hàng để lấy dữ liệu khi người dùng nhấp vào
+        ListSelectionModel selectionModel = roomTable.getSelectionModel();
+        selectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        selectionModel.addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {
+                int selectedRow = roomTable.getSelectedRow();
+                if (selectedRow != -1) {
+                    // Lấy dữ liệu từ hàng đã chọn
+                    tenPhong = (String) roomTable.getValueAt(selectedRow, 0);
+                    tang = (String) roomTable.getValueAt(selectedRow, 1);
+                    dienTich = (String) roomTable.getValueAt(selectedRow, 2);
+                    soNguoi = (String) roomTable.getValueAt(selectedRow, 3);
+
+                    // In ra dữ liệu của hàng được chọn
 //                System.out.println("Hàng đã chọn: " + col1 + ", " + col2 + ", " + col3 + ", " + col4);
-                roomName.setText("Bạn đã chọn phòng: " + tenPhong);
+                    roomName.setText("Bạn đã chọn phòng: " + tenPhong);
+                }
             }
-        }
-    });
+        });
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -152,9 +152,16 @@ public class RoomSearchFrm extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPane1.setViewportView(roomTable);

@@ -5,6 +5,9 @@
 package view;
 
 import controller.Client;
+import javax.swing.JOptionPane;
+import javax.swing.ListSelectionModel;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -16,16 +19,53 @@ public class FloorSearchFrm extends javax.swing.JFrame {
      * Creates new form FloorSearchFrm
      */
     private String adminName;
+    private String floorName;
+    private String moTa;
     
     public FloorSearchFrm() {
         initComponents();
     }
+    public void showErr(String er) {
+        JOptionPane.showMessageDialog(this, er, "Thông báo", JOptionPane.INFORMATION_MESSAGE);
+    }
 
     public FloorSearchFrm(String adminName) {
         this.adminName = adminName;
+//        this.floorName = floorName;
         initComponents();
+        nameOfAdmin.setText("admin: " + adminName);
     }
     
+    
+    
+    
+    public void updateTable(String s) {
+        System.out.println("đang thêm lại table");
+        DefaultTableModel model = (DefaultTableModel) floorTable.getModel();
+        model.setRowCount(0);
+        String[] lst = s.split("\\$");
+        int size = lst.length;
+        System.out.println(s);
+        for (int i = 1; i < size; i += 2) {
+            model.addRow(new Object[]{lst[i], lst[i + 1]});
+        }
+
+        // Lắng nghe sự kiện chọn hàng để lấy dữ liệu khi người dùng nhấp vào
+        ListSelectionModel selectionModel = floorTable.getSelectionModel();
+        selectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        selectionModel.addListSelectionListener(e -> {
+            if (!e.getValueIsAdjusting()) {
+                int selectedRow = floorTable.getSelectedRow();
+                if (selectedRow != -1) {
+                    // Lấy dữ liệu từ hàng đã chọn
+                    this.floorName = (String) floorTable.getValueAt(selectedRow, 0);
+                    this.moTa = (String) floorTable.getValueAt(selectedRow, 1);
+
+                    tangDaChon.setText("Bạn đã chọn tầng: " + floorName);
+                }
+            }
+        });
+    }
     
 
     /**
@@ -39,6 +79,16 @@ public class FloorSearchFrm extends javax.swing.JFrame {
 
         nameOfAdmin = new javax.swing.JLabel();
         backButton = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        tangDaChon = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
+        jTextField1 = new javax.swing.JTextField();
+        findRoom = new javax.swing.JButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        floorTable = new javax.swing.JTable();
+        jButton4 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,25 +101,124 @@ public class FloorSearchFrm extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setText("Tên tầng:");
+
+        tangDaChon.setText("Bạn đã chọn tầng:");
+
+        jButton1.setText("Sửa tầng");
+
+        jButton2.setText("Xóa tầng");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+
+        jTextField1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField1ActionPerformed(evt);
+            }
+        });
+
+        findRoom.setText("Tìm kiếm");
+        findRoom.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                findRoomActionPerformed(evt);
+            }
+        });
+
+        floorTable.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
+            },
+            new String [] {
+                "Tên tầng", "Mô tả"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        jScrollPane1.setViewportView(floorTable);
+
+        jButton4.setText("Thêm tầng");
+
+        jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
+        jLabel3.setText("Tìm kiếm tầng");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(28, 28, 28)
-                .addComponent(nameOfAdmin)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 218, Short.MAX_VALUE)
-                .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(28, 28, 28))
+                .addGap(31, 31, 31)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(25, 25, 25)
+                        .addComponent(tangDaChon)
+                        .addGap(297, 297, 297))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(jLabel1)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(findRoom)
+                                    .addGap(0, 0, Short.MAX_VALUE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(nameOfAdmin)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(61, 61, 61)
+                                        .addComponent(jButton4)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(jButton1)
+                                        .addGap(12, 12, 12)
+                                        .addComponent(jButton2)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(25, 25, 25))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3)
+                .addGap(142, 142, 142))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
+                .addGap(45, 45, 45)
+                .addComponent(jLabel3)
+                .addGap(36, 36, 36)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(backButton)
                     .addComponent(nameOfAdmin))
-                .addContainerGap(259, Short.MAX_VALUE))
+                .addGap(19, 19, 19)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel1)
+                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(findRoom))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
+                .addComponent(tangDaChon)
+                .addGap(35, 35, 35)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButton1)
+                    .addComponent(jButton2)
+                    .addComponent(jButton4))
+                .addGap(47, 47, 47))
         );
 
         nameOfAdmin.setText("admin: " + this.adminName);
@@ -84,6 +233,30 @@ public class FloorSearchFrm extends javax.swing.JFrame {
         Client.CloseView(Client.View.FLOOR_SEARCH);
         Client.OpenView(Client.View.DASHBOARD, adminName, x, y);
     }//GEN-LAST:event_backButtonActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        if (floorName == null) {
+            showErr("Hãy click một tầng trong bảng!");
+            return;
+        }
+        String matKhau = JOptionPane.showInputDialog(null, "Nhập mật khẩu để xác nhận!", "Mật khẩu của bạn là!", JOptionPane.QUESTION_MESSAGE);
+        Client.socketHandle.write("delete-floor-request$" + adminName + "$" + matKhau + "$" + floorName);
+    }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField1ActionPerformed
+
+    private void findRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findRoomActionPerformed
+        // TODO add your handling code here:
+        String floorFind = jTextField1.getText();
+        if (floorFind.equals("")) {
+            showErr("Hãy nhập vào thanh tìm kiếm!!");
+        } else {
+            Client.socketHandle.write("find-floor-request$" + floorFind);
+        }
+    }//GEN-LAST:event_findRoomActionPerformed
 
     /**
      * @param args the command line arguments
@@ -129,7 +302,17 @@ public class FloorSearchFrm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
+    private javax.swing.JButton findRoom;
+    private javax.swing.JTable floorTable;
+    private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButton4;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel nameOfAdmin;
+    private javax.swing.JLabel tangDaChon;
     // End of variables declaration//GEN-END:variables
 
 }
