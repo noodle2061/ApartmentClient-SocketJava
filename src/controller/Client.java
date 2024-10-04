@@ -15,6 +15,8 @@ import view.LoginFrm;
 import view.RegisterFrm;
 import view.FloorSearchFrm;
 import view.ModifyRoomFrm;
+import view.AddFloorFrm;
+import view.ModifyFloorFrm;
 
 /**
  *
@@ -32,6 +34,8 @@ public class Client {
     public static FloorSearchFrm floorSearchFrm;
     public static RoomSearchFrm roomSearchFrm;
     public static ModifyRoomFrm modifyRoomFrm;
+    public static AddFloorFrm addFloorFrm;
+    public static ModifyFloorFrm modifyFloorFrm;
 
     public Client() {
         try {

@@ -15,15 +15,15 @@ import java.net.UnknownHostException;
  * @author admin
  */
 public class SocketHandle implements Runnable {
-    
+
     private final DatagramSocket socket;
     private final InetAddress serverAddress;
-    
+
     public SocketHandle(DatagramSocket socket) throws UnknownHostException {
         this.socket = socket;
         this.serverAddress = InetAddress.getByName("localhost");
     }
-    
+
     public void write(String message) {
         try {
             byte[] sendData = message.getBytes("UTF-8");
@@ -34,7 +34,7 @@ public class SocketHandle implements Runnable {
             System.out.println(e);
         }
     }
-    
+
     @Override
     public void run() {
         try {
@@ -42,13 +42,13 @@ public class SocketHandle implements Runnable {
                 byte[] receiveData = new byte[1024];
                 DatagramPacket receivePacket = new DatagramPacket(receiveData, receiveData.length);
                 socket.receive(receivePacket);
-                
+
                 String receivedMessage = new String(receivePacket.getData(), 0, receivePacket.getLength(), "UTF-8");
                 String[] msg = receivedMessage.trim().split(" ");
                 String res = msg[0];
 
                 // dang nhap thanh cong, tra ve thong tin admin
-                if (res.equals("login-success")) {                    
+                if (res.equals("login-success")) {
                     String adminName = msg[1];
                     System.out.println(adminName);
                     int x = Client.loginFrm.getLocation().x;
@@ -101,18 +101,33 @@ public class SocketHandle implements Runnable {
                     Client.roomSearchFrm.updateTable(receivedMessage);
                 } else if (receivedMessage.startsWith("get-all-floor-success")) {
                     Client.floorSearchFrm.updateTable(receivedMessage);
-                }
-                else if (receivedMessage.startsWith("delete-floor-request-success")) {
-                    msg = receivedMessage.split("\\$");
-                    
-                }
-                else if (receivedMessage.startsWith("delete-floor-request-fail")) {
+                } else if (receivedMessage.startsWith("find-floor-success")) {
+                    Client.floorSearchFrm.updateTable(receivedMessage);
+                } else if (receivedMessage.startsWith("delete-floor-request-success")) {
+                    Client.floorSearchFrm.showErr("Xóa thành công!!");
+                    Client.floorSearchFrm.updateTable(receivedMessage);
+                } else if (receivedMessage.startsWith("delete-floor-request-fail")) {
                     Client.floorSearchFrm.showErr("Mật khẩu nhập sai!");
+                } else if (receivedMessage.startsWith("get-floor-close-success")) {
+                    Client.addFloorFrm.updateTable(receivedMessage);
+                } else if (receivedMessage.startsWith("add-floor-success")) {
+                    Client.addFloorFrm.dispose();
+                    Client.floorSearchFrm.showErr("Đã thêm phòng thành công!!");
+                    Client.floorSearchFrm.updateTable(receivedMessage);
+                } else if (receivedMessage.startsWith("add-room-fail")) {
+                    Client.modifyFloorFrm.showErr("Thêm phòng thất bại, đã có phòng cùng tên!");
+                } else if (receivedMessage.startsWith("add-room-success")) {
+                    Client.modifyFloorFrm.showErr("Thêm phòng thành công");
+                }
+                else if (receivedMessage.startsWith("change-floor-describe-success")) {
+                    Client.modifyFloorFrm.showErr("Đổi mô tả thành công");
+                    Client.modifyFloorFrm.dispose();
+                    Client.floorSearchFrm.updateTable(receivedMessage);
                 }
             }
         } catch (Exception e) {
             System.out.println(e);
         }
     }
-    
+
 }

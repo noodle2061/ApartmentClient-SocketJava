@@ -21,10 +21,11 @@ public class FloorSearchFrm extends javax.swing.JFrame {
     private String adminName;
     private String floorName;
     private String moTa;
-    
+
     public FloorSearchFrm() {
         initComponents();
     }
+
     public void showErr(String er) {
         JOptionPane.showMessageDialog(this, er, "Thông báo", JOptionPane.INFORMATION_MESSAGE);
     }
@@ -35,17 +36,16 @@ public class FloorSearchFrm extends javax.swing.JFrame {
         initComponents();
         nameOfAdmin.setText("admin: " + adminName);
     }
-    
-    
-    
-    
+
     public void updateTable(String s) {
-        System.out.println("đang thêm lại table");
         DefaultTableModel model = (DefaultTableModel) floorTable.getModel();
         model.setRowCount(0);
         String[] lst = s.split("\\$");
         int size = lst.length;
-        System.out.println(s);
+        if (size == 1) {
+            showErr("Không có phòng cần tìm!!");
+            return;
+        }
         for (int i = 1; i < size; i += 2) {
             model.addRow(new Object[]{lst[i], lst[i + 1]});
         }
@@ -66,7 +66,6 @@ public class FloorSearchFrm extends javax.swing.JFrame {
             }
         });
     }
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -87,7 +86,7 @@ public class FloorSearchFrm extends javax.swing.JFrame {
         findRoom = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         floorTable = new javax.swing.JTable();
-        jButton4 = new javax.swing.JButton();
+        themTangBtn = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -103,9 +102,14 @@ public class FloorSearchFrm extends javax.swing.JFrame {
 
         jLabel1.setText("Tên tầng:");
 
-        tangDaChon.setText("Bạn đã chọn tầng:");
+        tangDaChon.setText("Bạn hãy click vào một tầng trong bảng.");
 
         jButton1.setText("Sửa tầng");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jButton2.setText("Xóa tầng");
         jButton2.addActionListener(new java.awt.event.ActionListener() {
@@ -129,9 +133,6 @@ public class FloorSearchFrm extends javax.swing.JFrame {
 
         floorTable.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
                 {null, null}
             },
             new String [] {
@@ -148,7 +149,12 @@ public class FloorSearchFrm extends javax.swing.JFrame {
         });
         jScrollPane1.setViewportView(floorTable);
 
-        jButton4.setText("Thêm tầng");
+        themTangBtn.setText("Thêm tầng");
+        themTangBtn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                themTangBtnActionPerformed(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setText("Tìm kiếm tầng");
@@ -164,8 +170,16 @@ public class FloorSearchFrm extends javax.swing.JFrame {
                         .addGap(25, 25, 25)
                         .addComponent(tangDaChon)
                         .addGap(297, 297, 297))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(layout.createSequentialGroup()
+                            .addGap(112, 112, 112)
+                            .addComponent(themTangBtn)
+                            .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                            .addComponent(jButton1)
+                            .addGap(12, 12, 12)
+                            .addComponent(jButton2)
+                            .addGap(42, 42, 42))
+                        .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(jLabel1)
@@ -178,22 +192,16 @@ public class FloorSearchFrm extends javax.swing.JFrame {
                                     .addComponent(nameOfAdmin)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                     .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 376, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(61, 61, 61)
-                                        .addComponent(jButton4)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(jButton1)
-                                        .addGap(12, 12, 12)
-                                        .addComponent(jButton2)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(25, 25, 25))))
+                            .addGap(25, 25, 25)))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jLabel3)
-                .addGap(142, 142, 142))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(142, 142, 142))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 464, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(38, 38, 38))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,12 +221,12 @@ public class FloorSearchFrm extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(tangDaChon)
-                .addGap(35, 35, 35)
+                .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2)
-                    .addComponent(jButton4))
-                .addGap(47, 47, 47))
+                    .addComponent(themTangBtn))
+                .addGap(48, 48, 48))
         );
 
         nameOfAdmin.setText("admin: " + this.adminName);
@@ -240,7 +248,7 @@ public class FloorSearchFrm extends javax.swing.JFrame {
             showErr("Hãy click một tầng trong bảng!");
             return;
         }
-        String matKhau = JOptionPane.showInputDialog(null, "Nhập mật khẩu để xác nhận!", "Mật khẩu của bạn là!", JOptionPane.QUESTION_MESSAGE);
+        String matKhau = JOptionPane.showInputDialog(this, "Nhập mật khẩu tài khoản để xác nhận!", "Mật khẩu của bạn là!", JOptionPane.QUESTION_MESSAGE);
         Client.socketHandle.write("delete-floor-request$" + adminName + "$" + matKhau + "$" + floorName);
     }//GEN-LAST:event_jButton2ActionPerformed
 
@@ -257,6 +265,25 @@ public class FloorSearchFrm extends javax.swing.JFrame {
             Client.socketHandle.write("find-floor-request$" + floorFind);
         }
     }//GEN-LAST:event_findRoomActionPerformed
+
+    private void themTangBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themTangBtnActionPerformed
+        // TODO add your handling code here:
+        Client.addFloorFrm = new AddFloorFrm();
+        Client.addFloorFrm.setLocation(this.getLocation());
+        Client.addFloorFrm.setVisible(true);
+        Client.socketHandle.write("get-floor-close-request");
+    }//GEN-LAST:event_themTangBtnActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        if (floorName == null) {
+            showErr("Hãy click vào một phòng!");
+            return;
+        }
+        Client.modifyFloorFrm = new ModifyFloorFrm(this.floorName);
+        Client.modifyFloorFrm.setLocation(this.getLocation());
+        Client.modifyFloorFrm.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -306,13 +333,13 @@ public class FloorSearchFrm extends javax.swing.JFrame {
     private javax.swing.JTable floorTable;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JLabel nameOfAdmin;
     private javax.swing.JLabel tangDaChon;
+    private javax.swing.JButton themTangBtn;
     // End of variables declaration//GEN-END:variables
 
 }
