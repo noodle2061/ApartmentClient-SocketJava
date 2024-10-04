@@ -19,44 +19,47 @@ public class AddFloorFrm extends javax.swing.JFrame {
      * Creates new form AddFloorFrm
      */
     private String floorName, moTa;
-    
+
     public AddFloorFrm() {
         initComponents();
     }
-    
-    
+
     public void showErr(String er) {
         JOptionPane.showMessageDialog(this, er, "Thông báo", JOptionPane.INFORMATION_MESSAGE);
     }
-    
+
     public void updateTable(String s) {
-        System.out.println("them");
-        DefaultTableModel model = (DefaultTableModel) floorTable.getModel();
-        model.setRowCount(0);
-        String[] lst = s.split("\\$");
-        int size = lst.length;
-        if (size == 1) {
-            tangDaChon.setText("Không có tầng nào để thêm!!");
-        }
-        System.out.println(s);
-        for (int i = 1; i < size; i += 2) {
-            model.addRow(new Object[]{lst[i], lst[i + 1]});
+        try {
+            DefaultTableModel model = (DefaultTableModel) floorTable.getModel();
+            model.setRowCount(0);
+            String[] lst = s.split("\\$");
+            int size = lst.length;
+            if (size == 1) {
+                tangDaChon.setText("Không có tầng nào để thêm!!");
+            }
+            System.out.println(s);
+            for (int i = 1; i < size; i += 2) {
+                model.addRow(new Object[]{lst[i], lst[i + 1]});
+            }
+
+            // Lắng nghe sự kiện chọn hàng để lấy dữ liệu khi người dùng nhấp vào
+            ListSelectionModel selectionModel = floorTable.getSelectionModel();
+            selectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+            selectionModel.addListSelectionListener(e -> {
+                if (!e.getValueIsAdjusting()) {
+                    int selectedRow = floorTable.getSelectedRow();
+                    if (selectedRow != -1) {
+                        // Lấy dữ liệu từ hàng đã chọn
+                        this.floorName = (String) floorTable.getValueAt(selectedRow, 0);
+                        this.moTa = (String) floorTable.getValueAt(selectedRow, 1);
+                        tangDaChon.setText("Bạn có muốn thêm tầng: \"" + floorName + "\" không?");
+                    }
+                }
+            });
+        } catch (Exception e) {
+            System.out.println(e);
         }
 
-        // Lắng nghe sự kiện chọn hàng để lấy dữ liệu khi người dùng nhấp vào
-        ListSelectionModel selectionModel = floorTable.getSelectionModel();
-        selectionModel.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        selectionModel.addListSelectionListener(e -> {
-            if (!e.getValueIsAdjusting()) {
-                int selectedRow = floorTable.getSelectedRow();
-                if (selectedRow != -1) {
-                    // Lấy dữ liệu từ hàng đã chọn
-                    this.floorName = (String) floorTable.getValueAt(selectedRow, 0);
-                    this.moTa = (String) floorTable.getValueAt(selectedRow, 1);
-                    tangDaChon.setText("Bạn có muốn thêm tầng: \"" + floorName + "\" không?");
-                }
-            }
-        });
     }
 
     /**
@@ -168,7 +171,7 @@ public class AddFloorFrm extends javax.swing.JFrame {
             showErr("Chưa chọn tầng để thêm!");
             return;
         }
-        
+
         Client.socketHandle.write("add-floor-request$" + floorName);
     }//GEN-LAST:event_jButton1ActionPerformed
 

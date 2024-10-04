@@ -39,6 +39,9 @@ public class RoomSearchFrm extends javax.swing.JFrame {
         model.setRowCount(0);
         String[] lst = s.split("\\$");
         int size = lst.length;
+        if (size == 1) {
+            roomName.setText("Không có phòng nào hợp lệ.");
+        }
         for (int i = 1; i < size; i += 4) {
             model.addRow(new Object[]{lst[i], lst[i + 1], lst[i + 2], lst[i + 3]});
         }
@@ -176,7 +179,7 @@ public class RoomSearchFrm extends javax.swing.JFrame {
             }
         });
 
-        roomName.setText("Bạn đã chọn phòng:");
+        roomName.setText("Bạn chưa chọn phòng nào.");
 
         deleteRoomButton.setText("Xóa phòng");
         deleteRoomButton.addActionListener(new java.awt.event.ActionListener() {
@@ -380,6 +383,10 @@ public class RoomSearchFrm extends javax.swing.JFrame {
         // TODO add your handling code here:
         int x = this.getLocation().x;
         int y = this.getLocation().y;
+        if (tenPhong == null) {
+            showErr("Hãy chọn một phòng!");
+            return;
+        }
         Client.OpenUpdateRoomView(adminName, tenPhong, tang, x, y);
     }//GEN-LAST:event_modifyRoomButtonActionPerformed
 

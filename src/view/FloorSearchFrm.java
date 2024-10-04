@@ -261,6 +261,7 @@ public class FloorSearchFrm extends javax.swing.JFrame {
         String floorFind = jTextField1.getText();
         if (floorFind.equals("")) {
             showErr("Hãy nhập vào thanh tìm kiếm!!");
+            Client.socketHandle.write("get-all-floor-request");
         } else {
             Client.socketHandle.write("find-floor-request$" + floorFind);
         }
