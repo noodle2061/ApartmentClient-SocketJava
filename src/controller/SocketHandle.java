@@ -57,26 +57,26 @@ public class SocketHandle implements Runnable {
                     Client.OpenView(Client.View.DASHBOARD, adminName, x, y);
                 } // dang nhap that bai, yeu cau nhap lai
                 else if (res.equals("login-fail")) {
-                    Client.loginFrm.showErr("Nhập sai tên hoặc mật khẩu");
+                    Client.loginFrm.notify("Nhập sai tên hoặc mật khẩu");
                 } //dang ky thanh cong
                 else if (res.equals("register-success")) {
                     int x = Client.registerFrm.getLocation().x;
                     int y = Client.registerFrm.getLocation().y;
                     Client.CloseView(Client.View.REGISTER);
                     Client.OpenView(Client.View.LOGIN, x, y);
-                    Client.loginFrm.showErr("Bạn vừa đăng Ký thành công!!!");
+                    Client.loginFrm.notify("Bạn vừa đăng Ký thành công!!!");
                 } // dang ky that bai
                 else if (res.equals("register-fail")) {
-                    Client.registerFrm.showErr("Tài khoản đã tồn tại, vui lòng nhập lại!");
+                    Client.registerFrm.notify("Tài khoản đã tồn tại, vui lòng nhập lại!");
                 } // xu ly xóa tài khoản
                 else if (res.equals("delete-account-success")) {
                     int x = Client.deleteAccountFrm.getLocation().x;
                     int y = Client.deleteAccountFrm.getLocation().y;
                     Client.CloseView(Client.View.DELETEACCOUNT);
                     Client.OpenView(Client.View.LOGIN, x, y);
-                    Client.loginFrm.showErr("Bạn vừa xóa tài khoản thành công!!!");
+                    Client.loginFrm.notify("Bạn vừa xóa tài khoản thành công!!!");
                 } else if (res.equals("delete-account-fail")) {
-                    Client.deleteAccountFrm.showErr("Nhập sai mật khẩu.");
+                    Client.deleteAccountFrm.notify("Nhập sai mật khẩu.");
                 } // đổi password thành công
                 else if (res.equals("change-password-success")) {
                     String name = msg[1];
@@ -85,42 +85,42 @@ public class SocketHandle implements Runnable {
                     Client.CloseView(Client.View.CHANGEPASSSWORD);
                     Client.OpenView(Client.View.DASHBOARD, name, x, y);
                 } else if (res.equals("change-password-fail")) {
-                    Client.changePasswordFrm.showErr("Nhập sai mật khẩu!!");
+                    Client.changePasswordFrm.notify("Nhập sai mật khẩu!!");
                 } else if (receivedMessage.startsWith("open-search-room-frm-success")) {
                     Client.roomSearchFrm.updateTable(receivedMessage);
                 } else if (receivedMessage.startsWith("return-room-search")) {
                     Client.roomSearchFrm.updateTable(receivedMessage);
                 } else if (res.equals("delete-room-response-fail")) {
-                    Client.roomSearchFrm.showErr("Xóa không thành công!");
+                    Client.roomSearchFrm.notify("Xóa không thành công!");
                 } else if (receivedMessage.startsWith("delete-room-response-success")) {
-                    Client.roomSearchFrm.showErr("Xóa thành công!");
+                    Client.roomSearchFrm.notify("Xóa thành công!");
                     Client.roomSearchFrm.updateTable(receivedMessage);
                 } else if (receivedMessage.startsWith("modify-room-response-success")) {
                     Client.CloseView(Client.View.MODIFY_ROOM);
-                    Client.roomSearchFrm.showErr("Thay đổi thành công!");
+                    Client.roomSearchFrm.notify("Thay đổi thành công!");
                     Client.roomSearchFrm.updateTable(receivedMessage);
                 } else if (receivedMessage.startsWith("get-all-floor-success")) {
                     Client.floorSearchFrm.updateTable(receivedMessage);
                 } else if (receivedMessage.startsWith("find-floor-success")) {
                     Client.floorSearchFrm.updateTable(receivedMessage);
                 } else if (receivedMessage.startsWith("delete-floor-request-success")) {
-                    Client.floorSearchFrm.showErr("Xóa thành công!!");
+                    Client.floorSearchFrm.notify("Xóa thành công!!");
                     Client.floorSearchFrm.updateTable(receivedMessage);
                 } else if (receivedMessage.startsWith("delete-floor-request-fail")) {
-                    Client.floorSearchFrm.showErr("Mật khẩu nhập sai!");
+                    Client.floorSearchFrm.notify("Mật khẩu nhập sai!");
                 } else if (receivedMessage.startsWith("get-floor-close-success")) {
                     Client.addFloorFrm.updateTable(receivedMessage);
                 } else if (receivedMessage.startsWith("add-floor-success")) {
                     Client.addFloorFrm.dispose();
-                    Client.floorSearchFrm.showErr("Đã thêm phòng thành công!!");
+                    Client.floorSearchFrm.notify("Đã thêm phòng thành công!!");
                     Client.floorSearchFrm.updateTable(receivedMessage);
                 } else if (receivedMessage.startsWith("add-room-fail")) {
-                    Client.modifyFloorFrm.showErr("Thêm phòng thất bại, đã có phòng cùng tên!");
+                    Client.modifyFloorFrm.notify("Thêm phòng thất bại, đã có phòng cùng tên!");
                 } else if (receivedMessage.startsWith("add-room-success")) {
-                    Client.modifyFloorFrm.showErr("Thêm phòng thành công");
+                    Client.modifyFloorFrm.notify("Thêm phòng thành công");
                 }
                 else if (receivedMessage.startsWith("change-floor-describe-success")) {
-                    Client.modifyFloorFrm.showErr("Đổi mô tả thành công");
+                    Client.modifyFloorFrm.notify("Đổi mô tả thành công");
                     Client.modifyFloorFrm.dispose();
                     Client.floorSearchFrm.updateTable(receivedMessage);
                 }

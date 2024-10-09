@@ -29,7 +29,7 @@ public class ModifyFloorFrm extends javax.swing.JFrame {
     }
     
     
-    public void showErr(String er) {
+    public void notify(String er) {
         JOptionPane.showMessageDialog(this, er, "Thông báo", JOptionPane.INFORMATION_MESSAGE);
     }
 
@@ -42,33 +42,33 @@ public class ModifyFloorFrm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        describe = new javax.swing.JTextField();
+        addRoomBtn = new javax.swing.JButton();
+        doiMoTaBtn = new javax.swing.JButton();
+        describeTxt = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        newRoomName = new javax.swing.JTextField();
+        newRoomNameTxt = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        newRoomArea = new javax.swing.JTextField();
-        newRoomCapacity = new javax.swing.JTextField();
+        newRoomAreaTxt = new javax.swing.JTextField();
+        newRoomCapacityTxt = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
-        jButton3 = new javax.swing.JButton();
+        turnBackBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jButton1.setText("Thêm phòng");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        addRoomBtn.setText("Thêm phòng");
+        addRoomBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                addRoomBtnActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Đổi mô tả");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        doiMoTaBtn.setText("Đổi mô tả");
+        doiMoTaBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                doiMoTaBtnActionPerformed(evt);
             }
         });
 
@@ -80,9 +80,9 @@ public class ModifyFloorFrm extends javax.swing.JFrame {
 
         jLabel3.setText("Tên phòng mới:");
 
-        newRoomName.addActionListener(new java.awt.event.ActionListener() {
+        newRoomNameTxt.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                newRoomNameActionPerformed(evt);
+                newRoomNameTxtActionPerformed(evt);
             }
         });
 
@@ -93,10 +93,10 @@ public class ModifyFloorFrm extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
         jLabel6.setText("1. Thêm phòng");
 
-        jButton3.setText("Quay lại");
-        jButton3.addActionListener(new java.awt.event.ActionListener() {
+        turnBackBtn.setText("Quay lại");
+        turnBackBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton3ActionPerformed(evt);
+                turnBackBtnActionPerformed(evt);
             }
         });
 
@@ -124,27 +124,27 @@ public class ModifyFloorFrm extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addComponent(jLabel2)
                                         .addGap(0, 140, Short.MAX_VALUE))
-                                    .addComponent(newRoomName)
-                                    .addComponent(newRoomArea)
-                                    .addComponent(newRoomCapacity)))))
+                                    .addComponent(newRoomNameTxt)
+                                    .addComponent(newRoomAreaTxt)
+                                    .addComponent(newRoomCapacityTxt)))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(47, 47, 47)
-                        .addComponent(describe)
+                        .addComponent(describeTxt)
                         .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jButton1)
-                            .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(addRoomBtn)
+                            .addComponent(doiMoTaBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addGap(69, 69, 69))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(jButton3)
+                .addComponent(turnBackBtn)
                 .addGap(47, 47, 47))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jButton3)
+                .addComponent(turnBackBtn)
                 .addGap(1, 1, 1)
                 .addComponent(jLabel2)
                 .addGap(9, 9, 9)
@@ -152,65 +152,65 @@ public class ModifyFloorFrm extends javax.swing.JFrame {
                 .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(newRoomName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(newRoomNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(newRoomArea, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(newRoomAreaTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel5)
-                    .addComponent(newRoomCapacity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(newRoomCapacityTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(jButton1)
+                .addComponent(addRoomBtn)
                 .addGap(37, 37, 37)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton2)
-                    .addComponent(describe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(doiMoTaBtn)
+                    .addComponent(describeTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(25, 25, 25))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void newRoomNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newRoomNameActionPerformed
+    private void newRoomNameTxtActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_newRoomNameTxtActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_newRoomNameActionPerformed
+    }//GEN-LAST:event_newRoomNameTxtActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void addRoomBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addRoomBtnActionPerformed
         // TODO add your handling code here:
-        String name = newRoomName.getText();
-        String area = newRoomArea.getText();
-        String capacity = newRoomCapacity.getText();
+        String name = newRoomNameTxt.getText();
+        String area = newRoomAreaTxt.getText();
+        String capacity = newRoomCapacityTxt.getText();
         if (name.equals("") || area.equals("") || capacity.equals("")) {
-            showErr("Hãy nhập đầy đủ các thông tin của phòng");
+            notify("Hãy nhập đầy đủ các thông tin của phòng");
         } else {
             try {
                 Double a = Double.parseDouble(area);
                 int b = Integer.parseInt(capacity);
                 Client.socketHandle.write("add-room-request$" + floorName + "$" + name + "$" + area + "$" + capacity);
             } catch (NumberFormatException e) {
-                showErr("Hãy nhập đúng định dạng số!");
+                notify("Hãy nhập đúng định dạng số!");
             }
         }
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_addRoomBtnActionPerformed
 
-    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+    private void turnBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turnBackBtnActionPerformed
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_jButton3ActionPerformed
+    }//GEN-LAST:event_turnBackBtnActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void doiMoTaBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_doiMoTaBtnActionPerformed
         // TODO add your handling code here:
-        String mota = describe.getText();
+        String mota = describeTxt.getText();
         if (mota.equals("")) {
-            showErr("Hãy nhập mô tả mới!");
+            notify("Hãy nhập mô tả mới!");
             return;
         }
         Client.socketHandle.write("change-floor-describe-request$" + floorName + "$" + mota);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_doiMoTaBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -248,19 +248,19 @@ public class ModifyFloorFrm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField describe;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
+    private javax.swing.JButton addRoomBtn;
+    private javax.swing.JTextField describeTxt;
+    private javax.swing.JButton doiMoTaBtn;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JTextField newRoomArea;
-    private javax.swing.JTextField newRoomCapacity;
-    private javax.swing.JTextField newRoomName;
+    private javax.swing.JTextField newRoomAreaTxt;
+    private javax.swing.JTextField newRoomCapacityTxt;
+    private javax.swing.JTextField newRoomNameTxt;
+    private javax.swing.JButton turnBackBtn;
     // End of variables declaration//GEN-END:variables
 
 }

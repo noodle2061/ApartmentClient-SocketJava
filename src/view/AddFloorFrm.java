@@ -24,7 +24,7 @@ public class AddFloorFrm extends javax.swing.JFrame {
         initComponents();
     }
 
-    public void showErr(String er) {
+    public void notify(String er) {
         JOptionPane.showMessageDialog(this, er, "Thông báo", JOptionPane.INFORMATION_MESSAGE);
     }
 
@@ -75,8 +75,8 @@ public class AddFloorFrm extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         floorTable = new javax.swing.JTable();
         tangDaChon = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        addFloorBtn = new javax.swing.JButton();
+        turnBackBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,17 +106,17 @@ public class AddFloorFrm extends javax.swing.JFrame {
 
         tangDaChon.setText("Bạn chưa chọn phòng nào");
 
-        jButton1.setText("Thêm tầng");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        addFloorBtn.setText("Thêm tầng");
+        addFloorBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                addFloorBtnActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Quay lại");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        turnBackBtn.setText("Quay lại");
+        turnBackBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                turnBackBtnActionPerformed(evt);
             }
         });
 
@@ -140,10 +140,10 @@ public class AddFloorFrm extends javax.swing.JFrame {
                 .addGap(0, 0, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton2)
+                        .addComponent(turnBackBtn)
                         .addGap(71, 71, 71))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jButton1)
+                        .addComponent(addFloorBtn)
                         .addGap(52, 52, 52))))
         );
         layout.setVerticalGroup(
@@ -152,33 +152,33 @@ public class AddFloorFrm extends javax.swing.JFrame {
                 .addGap(16, 16, 16)
                 .addComponent(jLabel1)
                 .addGap(20, 20, 20)
-                .addComponent(jButton2)
+                .addComponent(turnBackBtn)
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 146, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(tangDaChon)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(addFloorBtn)
                 .addContainerGap(55, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void addFloorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_addFloorBtnActionPerformed
         // TODO add your handling code here:
         if (floorName == null) {
-            showErr("Chưa chọn tầng để thêm!");
+            notify("Chưa chọn tầng để thêm!");
             return;
         }
 
         Client.socketHandle.write("add-floor-request$" + floorName);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_addFloorBtnActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void turnBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turnBackBtnActionPerformed
         // TODO add your handling code here:
         this.dispose();
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_turnBackBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -216,12 +216,12 @@ public class AddFloorFrm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton addFloorBtn;
     private javax.swing.JTable floorTable;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel tangDaChon;
+    private javax.swing.JButton turnBackBtn;
     // End of variables declaration//GEN-END:variables
 
 }

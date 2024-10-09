@@ -26,7 +26,7 @@ public class DeleteAccountFrm extends javax.swing.JFrame {
         initComponents();
     }
     
-    public void showErr(String er) {
+    public void notify(String er) {
         err.setText(er);
     }
     /**
@@ -41,9 +41,9 @@ public class DeleteAccountFrm extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         passValue = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
-        ConfirmButton = new javax.swing.JButton();
+        confirmButton = new javax.swing.JButton();
         err = new javax.swing.JLabel();
-        BackButton = new javax.swing.JToggleButton();
+        backButton = new javax.swing.JToggleButton();
         jLabel2 = new javax.swing.JLabel();
 
         jLabel1.setText("admin: ");
@@ -52,17 +52,17 @@ public class DeleteAccountFrm extends javax.swing.JFrame {
 
         jLabel3.setText("Nhập lại mật khẩu:");
 
-        ConfirmButton.setText("Xóa tài khoản");
-        ConfirmButton.addActionListener(new java.awt.event.ActionListener() {
+        confirmButton.setText("Xóa tài khoản");
+        confirmButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ConfirmButtonActionPerformed(evt);
+                confirmButtonActionPerformed(evt);
             }
         });
 
-        BackButton.setText("Quay lại");
-        BackButton.addActionListener(new java.awt.event.ActionListener() {
+        backButton.setText("Quay lại");
+        backButton.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                BackButtonActionPerformed(evt);
+                backButtonActionPerformed(evt);
             }
         });
 
@@ -76,14 +76,14 @@ public class DeleteAccountFrm extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(BackButton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(err, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
                         .addGap(28, 28, 28)
                         .addComponent(passValue, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(52, 52, 52))
-                    .addComponent(ConfirmButton))
+                    .addComponent(confirmButton))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 0, Short.MAX_VALUE)
@@ -102,32 +102,32 @@ public class DeleteAccountFrm extends javax.swing.JFrame {
                     .addComponent(passValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addGap(18, 18, 18)
-                .addComponent(ConfirmButton)
+                .addComponent(confirmButton)
                 .addGap(18, 18, 18)
-                .addComponent(BackButton)
+                .addComponent(backButton)
                 .addGap(58, 58, 58))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void BackButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BackButtonActionPerformed
+    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
         // TODO add your handling code here:
         int x = getLocation().x;
         int y = getLocation().y;
         Client.CloseView(Client.View.DELETEACCOUNT);
         Client.OpenView(Client.View.DASHBOARD, this.adminName, x, y);
-    }//GEN-LAST:event_BackButtonActionPerformed
+    }//GEN-LAST:event_backButtonActionPerformed
 
-    private void ConfirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ConfirmButtonActionPerformed
+    private void confirmButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_confirmButtonActionPerformed
         // TODO add your handling code here:
         String name = this.adminName;
         String pass = String.copyValueOf(passValue.getPassword());
         if (pass.equals("")) {
-            showErr("Hãy nhập mật khẩu.");
+            notify("Hãy nhập mật khẩu.");
         } else 
             Client.socketHandle.write("delete-account-request " + name + " " + pass);
-    }//GEN-LAST:event_ConfirmButtonActionPerformed
+    }//GEN-LAST:event_confirmButtonActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,8 +165,8 @@ public class DeleteAccountFrm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JToggleButton BackButton;
-    private javax.swing.JButton ConfirmButton;
+    private javax.swing.JToggleButton backButton;
+    private javax.swing.JButton confirmButton;
     private javax.swing.JLabel err;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

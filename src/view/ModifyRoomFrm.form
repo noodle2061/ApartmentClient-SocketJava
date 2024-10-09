@@ -37,22 +37,22 @@
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="42" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                          <Component id="changeRoomBtn" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="0" max="-2" attributes="0">
                               <Group type="102" attributes="0">
                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-                                  <Component id="newArea" max="32767" attributes="0"/>
+                                  <Component id="newAreaTxt" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" attributes="0">
                                   <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace type="separate" max="-2" attributes="0"/>
-                                  <Component id="newCapacity" max="32767" attributes="0"/>
+                                  <Component id="newCapacityTxt" max="32767" attributes="0"/>
                               </Group>
                               <Group type="102" alignment="0" attributes="0">
                                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                   <EmptySpace min="-2" pref="56" max="-2" attributes="0"/>
-                                  <Component id="newName" min="-2" pref="202" max="-2" attributes="0"/>
+                                  <Component id="newNameTxt" min="-2" pref="202" max="-2" attributes="0"/>
                               </Group>
                           </Group>
                       </Group>
@@ -64,7 +64,7 @@
               <EmptySpace min="-2" pref="21" max="-2" attributes="0"/>
               <Component id="floorNameTxt" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="jButton2" min="-2" max="-2" attributes="0"/>
+              <Component id="turnBackBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -75,7 +75,7 @@
               <EmptySpace min="-2" pref="15" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="floorNameTxt" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="jButton2" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="turnBackBtn" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="roomNameTxt" min="-2" max="-2" attributes="0"/>
@@ -84,20 +84,20 @@
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="newName" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="newNameTxt" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="newArea" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="newAreaTxt" alignment="3" min="-2" max="-2" attributes="0"/>
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="newCapacity" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="newCapacityTxt" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="changeRoomBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace pref="46" max="32767" attributes="0"/>
           </Group>
       </Group>
@@ -137,29 +137,29 @@
         <Property name="text" type="java.lang.String" value="S&#x1ed1; ng&#x1b0;&#x1edd;i &#x1edf; m&#x1edb;i:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JTextField" name="newName">
+    <Component class="javax.swing.JTextField" name="newNameTxt">
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newNameActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="newNameTxtActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JTextField" name="newCapacity">
+    <Component class="javax.swing.JTextField" name="newCapacityTxt">
     </Component>
-    <Component class="javax.swing.JTextField" name="newArea">
+    <Component class="javax.swing.JTextField" name="newAreaTxt">
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="changeRoomBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Thay &#x111;&#x1ed5;i"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="changeRoomBtnActionPerformed"/>
       </Events>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton2">
+    <Component class="javax.swing.JButton" name="turnBackBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Quay l&#x1ea1;i"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton2ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="turnBackBtnActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

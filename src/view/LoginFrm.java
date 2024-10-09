@@ -17,7 +17,7 @@ public class LoginFrm extends javax.swing.JFrame {
      */
     
     
-    public void showErr(String er) {
+    public void notify(String er) {
         errLabel.setText(er);
     }
     
@@ -37,7 +37,7 @@ public class LoginFrm extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        userName = new javax.swing.JTextField();
+        userNameTxt = new javax.swing.JTextField();
         passwordValue = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
         submitButton = new javax.swing.JButton();
@@ -91,7 +91,7 @@ public class LoginFrm extends javax.swing.JFrame {
                             .addComponent(jLabel1))
                         .addGap(30, 30, 30)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(userName)
+                            .addComponent(userNameTxt)
                             .addComponent(passwordValue, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(93, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -109,7 +109,7 @@ public class LoginFrm extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(userNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -127,12 +127,12 @@ public class LoginFrm extends javax.swing.JFrame {
     private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
         // TODO add your handling code here:
         try {
-            String name = userName.getText();
+            String name = userNameTxt.getText();
             String password = String.copyValueOf(passwordValue.getPassword());
             if (name.equals("")) {
-                showErr("Hãy nhập tên!!");
+                notify("Hãy nhập tên!!");
             } else if (password.equals("")) {
-                showErr("Hãy nhập mật khẩu!!");
+                notify("Hãy nhập mật khẩu!!");
             } else {
                 Client.socketHandle.write("login-request " + name + " " + password);
             }
@@ -192,7 +192,7 @@ public class LoginFrm extends javax.swing.JFrame {
     private javax.swing.JPasswordField passwordValue;
     private javax.swing.JButton registerButton;
     private javax.swing.JButton submitButton;
-    private javax.swing.JTextField userName;
+    private javax.swing.JTextField userNameTxt;
     // End of variables declaration//GEN-END:variables
 
 }

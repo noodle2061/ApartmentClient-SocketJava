@@ -30,7 +30,7 @@ public class RoomSearchFrm extends javax.swing.JFrame {
         initComponents();
     }
 
-    public void showErr(String er) {
+    public void notify(String er) {
         JOptionPane.showMessageDialog(this, er, "Thông báo", JOptionPane.INFORMATION_MESSAGE);
     }
     
@@ -77,7 +77,7 @@ public class RoomSearchFrm extends javax.swing.JFrame {
 
         jComboBox2 = new javax.swing.JComboBox<>();
         nameOfAdmin = new javax.swing.JLabel();
-        backButton = new javax.swing.JButton();
+        backBtn = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         minArea = new javax.swing.JTextField();
@@ -91,13 +91,13 @@ public class RoomSearchFrm extends javax.swing.JFrame {
         minCapacity = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         floorChoose = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        searchBtn = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         roomTable = new javax.swing.JTable();
         jLabel8 = new javax.swing.JLabel();
-        modifyRoomButton = new javax.swing.JButton();
+        modifyRoomBtn = new javax.swing.JButton();
         roomName = new javax.swing.JLabel();
-        deleteRoomButton = new javax.swing.JButton();
+        deleteRoomBtn = new javax.swing.JButton();
 
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -105,10 +105,10 @@ public class RoomSearchFrm extends javax.swing.JFrame {
 
         nameOfAdmin.setText("admin: ");
 
-        backButton.setText("Quay lại");
-        backButton.addActionListener(new java.awt.event.ActionListener() {
+        backBtn.setText("Quay lại");
+        backBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                backButtonActionPerformed(evt);
+                backBtnActionPerformed(evt);
             }
         });
 
@@ -134,10 +134,10 @@ public class RoomSearchFrm extends javax.swing.JFrame {
             }
         });
 
-        jButton1.setText("Tìm kiếm");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        searchBtn.setText("Tìm kiếm");
+        searchBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                searchBtnActionPerformed(evt);
             }
         });
 
@@ -172,19 +172,19 @@ public class RoomSearchFrm extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("Danh sách phòng:");
 
-        modifyRoomButton.setText("Sửa phòng");
-        modifyRoomButton.addActionListener(new java.awt.event.ActionListener() {
+        modifyRoomBtn.setText("Sửa phòng");
+        modifyRoomBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                modifyRoomButtonActionPerformed(evt);
+                modifyRoomBtnActionPerformed(evt);
             }
         });
 
         roomName.setText("Bạn chưa chọn phòng nào.");
 
-        deleteRoomButton.setText("Xóa phòng");
-        deleteRoomButton.addActionListener(new java.awt.event.ActionListener() {
+        deleteRoomBtn.setText("Xóa phòng");
+        deleteRoomBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                deleteRoomButtonActionPerformed(evt);
+                deleteRoomBtnActionPerformed(evt);
             }
         });
 
@@ -198,13 +198,13 @@ public class RoomSearchFrm extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(nameOfAdmin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(backButton, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(backBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(20, 20, 20))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(251, 251, 251)
-                                .addComponent(jButton1))
+                                .addComponent(searchBtn))
                             .addComponent(jLabel1)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(nameOfRoom, javax.swing.GroupLayout.PREFERRED_SIZE, 211, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -244,9 +244,9 @@ public class RoomSearchFrm extends javax.swing.JFrame {
                         .addGap(0, 0, Short.MAX_VALUE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(deleteRoomButton)
+                .addComponent(deleteRoomBtn)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(modifyRoomButton)
+                .addComponent(modifyRoomBtn)
                 .addGap(144, 144, 144))
             .addGroup(layout.createSequentialGroup()
                 .addGap(62, 62, 62)
@@ -259,7 +259,7 @@ public class RoomSearchFrm extends javax.swing.JFrame {
                 .addGap(28, 28, 28)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(nameOfAdmin)
-                    .addComponent(backButton))
+                    .addComponent(backBtn))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
                 .addGap(24, 24, 24)
@@ -283,7 +283,7 @@ public class RoomSearchFrm extends javax.swing.JFrame {
                     .addComponent(jLabel7)
                     .addComponent(floorChoose, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(searchBtn)
                 .addGap(20, 20, 20)
                 .addComponent(jLabel8)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -292,8 +292,8 @@ public class RoomSearchFrm extends javax.swing.JFrame {
                 .addComponent(roomName)
                 .addGap(22, 22, 22)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(modifyRoomButton)
-                    .addComponent(deleteRoomButton))
+                    .addComponent(modifyRoomBtn)
+                    .addComponent(deleteRoomBtn))
                 .addGap(14, 14, 14))
         );
 
@@ -302,15 +302,15 @@ public class RoomSearchFrm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void backButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backButtonActionPerformed
+    private void backBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_backBtnActionPerformed
         // TODO add your handling code here:
         int x = getLocation().x;
         int y = getLocation().y;
         Client.CloseView(Client.View.ROOM_SEARCH);
         Client.OpenView(Client.View.DASHBOARD, adminName, x, y);
-    }//GEN-LAST:event_backButtonActionPerformed
+    }//GEN-LAST:event_backBtnActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void searchBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_searchBtnActionPerformed
         // TODO add your handling code here:
         String name = nameOfRoom.getText();
         String areamin = minArea.getText();
@@ -347,7 +347,7 @@ public class RoomSearchFrm extends javax.swing.JFrame {
             }
 
         } catch (NumberFormatException e) {
-            showErr("Định dạng của diện tích không đúng! Nhập lại!");
+            notify("Định dạng của diện tích không đúng! Nhập lại!");
         }
 
         try {
@@ -358,37 +358,37 @@ public class RoomSearchFrm extends javax.swing.JFrame {
                 int b = Integer.parseInt(capacitymax);
             }
         } catch (NumberFormatException e) {
-            showErr("Định dạng của số người không đúng! Nhập lại");
+            notify("Định dạng của số người không đúng! Nhập lại");
         }
         
         if (floorName.equals("Chọn tầng cần tìm")) floorName = "none";
 
         Client.socketHandle.write("search-room-request$" + name + "$" + areamin + "$" + areamax + "$" + capacitymin + "$" + capacitymax + "$" + floorName);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_searchBtnActionPerformed
 
     private void floorChooseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_floorChooseActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_floorChooseActionPerformed
 
-    private void deleteRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteRoomButtonActionPerformed
+    private void deleteRoomBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteRoomBtnActionPerformed
         // TODO add your handling code here:
         if (tenPhong.equals("")) {
-            showErr("Hãy chọn phòng để xóa!!");
+            notify("Hãy chọn phòng để xóa!!");
             return;
         }
         Client.socketHandle.write("delete-room-request$" + tenPhong + "$" + tang);
-    }//GEN-LAST:event_deleteRoomButtonActionPerformed
+    }//GEN-LAST:event_deleteRoomBtnActionPerformed
 
-    private void modifyRoomButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyRoomButtonActionPerformed
+    private void modifyRoomBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyRoomBtnActionPerformed
         // TODO add your handling code here:
         int x = this.getLocation().x;
         int y = this.getLocation().y;
         if (tenPhong == null) {
-            showErr("Hãy chọn một phòng!");
+            notify("Hãy chọn một phòng!");
             return;
         }
         Client.OpenUpdateRoomView(adminName, tenPhong, tang, x, y);
-    }//GEN-LAST:event_modifyRoomButtonActionPerformed
+    }//GEN-LAST:event_modifyRoomBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -427,10 +427,9 @@ public class RoomSearchFrm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton backButton;
-    private javax.swing.JButton deleteRoomButton;
+    private javax.swing.JButton backBtn;
+    private javax.swing.JButton deleteRoomBtn;
     private javax.swing.JComboBox<String> floorChoose;
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
@@ -445,11 +444,12 @@ public class RoomSearchFrm extends javax.swing.JFrame {
     private javax.swing.JTextField maxCapacity;
     private javax.swing.JTextField minArea;
     private javax.swing.JTextField minCapacity;
-    private javax.swing.JButton modifyRoomButton;
+    private javax.swing.JButton modifyRoomBtn;
     private javax.swing.JLabel nameOfAdmin;
     private javax.swing.JTextField nameOfRoom;
     private javax.swing.JLabel roomName;
     private javax.swing.JTable roomTable;
+    private javax.swing.JButton searchBtn;
     // End of variables declaration//GEN-END:variables
 
 }

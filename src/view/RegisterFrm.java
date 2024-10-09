@@ -16,7 +16,7 @@ public class RegisterFrm extends javax.swing.JFrame {
      * Creates new form RegisterFrm
      */
     
-    public void showErr(String er) {
+    public void notify(String er) {
         errLabel.setText(er);
     }
     
@@ -35,12 +35,12 @@ public class RegisterFrm extends javax.swing.JFrame {
 
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        userName = new javax.swing.JTextField();
+        userNameTxt = new javax.swing.JTextField();
         passwordValue = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
-        registerButton = new javax.swing.JButton();
+        registerBtn = new javax.swing.JButton();
         errLabel = new javax.swing.JLabel();
-        submitButton = new javax.swing.JButton();
+        submitBtn = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -51,20 +51,20 @@ public class RegisterFrm extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel3.setText("Đăng Ký");
 
-        registerButton.setText("Đăng ký");
-        registerButton.addActionListener(new java.awt.event.ActionListener() {
+        registerBtn.setText("Đăng ký");
+        registerBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                registerButtonActionPerformed(evt);
+                registerBtnActionPerformed(evt);
             }
         });
 
         errLabel.setFont(new java.awt.Font("Segoe UI", 1, 12)); // NOI18N
         errLabel.setForeground(new java.awt.Color(255, 51, 51));
 
-        submitButton.setText("Đăng nhập");
-        submitButton.addActionListener(new java.awt.event.ActionListener() {
+        submitBtn.setText("Đăng nhập");
+        submitBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                submitButtonActionPerformed(evt);
+                submitBtnActionPerformed(evt);
             }
         });
 
@@ -82,16 +82,16 @@ public class RegisterFrm extends javax.swing.JFrame {
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(submitButton, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(submitBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 108, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(registerButton, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addComponent(registerBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel2)
                                     .addComponent(jLabel1))
                                 .addGap(30, 30, 30)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(userName)
+                                    .addComponent(userNameTxt)
                                     .addComponent(passwordValue, javax.swing.GroupLayout.PREFERRED_SIZE, 183, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(60, 60, 60))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
@@ -108,41 +108,41 @@ public class RegisterFrm extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(userName, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(userNameTxt, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(passwordValue, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(40, 40, 40)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(registerButton)
-                    .addComponent(submitButton))
+                    .addComponent(registerBtn)
+                    .addComponent(submitBtn))
                 .addGap(72, 72, 72))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
+    private void registerBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerBtnActionPerformed
         // TODO add your handling code here:
-        String name = userName.getText();
+        String name = userNameTxt.getText();
         String pass = String.copyValueOf(passwordValue.getPassword());
         if (name.equals("")) {
-            showErr("Hãy nhập tên vào!!!");
+            notify("Hãy nhập tên vào!!!");
         } else if (pass.equals("")) {
-            showErr("Hãy nhập mật khẩu vào!!!");
+            notify("Hãy nhập mật khẩu vào!!!");
         } else {
             Client.socketHandle.write("register-request " + name + " " + pass);
         }
-    }//GEN-LAST:event_registerButtonActionPerformed
+    }//GEN-LAST:event_registerBtnActionPerformed
 
-    private void submitButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitButtonActionPerformed
+    private void submitBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_submitBtnActionPerformed
         // TODO add your handling code here:
         int x = getLocation().x;
         int y = getLocation().y;
         Client.CloseView(Client.View.REGISTER);
         Client.OpenView(Client.View.LOGIN, x, y);
-    }//GEN-LAST:event_submitButtonActionPerformed
+    }//GEN-LAST:event_submitBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -185,9 +185,9 @@ public class RegisterFrm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPasswordField passwordValue;
-    private javax.swing.JButton registerButton;
-    private javax.swing.JButton submitButton;
-    private javax.swing.JTextField userName;
+    private javax.swing.JButton registerBtn;
+    private javax.swing.JButton submitBtn;
+    private javax.swing.JTextField userNameTxt;
     // End of variables declaration//GEN-END:variables
 
 }

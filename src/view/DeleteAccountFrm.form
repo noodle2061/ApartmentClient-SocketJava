@@ -36,7 +36,7 @@
           <Group type="102" attributes="0">
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="BackButton" alignment="1" min="-2" pref="102" max="-2" attributes="0"/>
+                  <Component id="backButton" alignment="1" min="-2" pref="102" max="-2" attributes="0"/>
                   <Component id="err" min="-2" pref="126" max="-2" attributes="0"/>
                   <Group type="102" attributes="0">
                       <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
@@ -44,7 +44,7 @@
                       <Component id="passValue" min="-2" pref="179" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="52" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="ConfirmButton" alignment="1" min="-2" max="-2" attributes="0"/>
+                  <Component id="confirmButton" alignment="1" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
           </Group>
@@ -68,9 +68,9 @@
                   <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="ConfirmButton" min="-2" max="-2" attributes="0"/>
+              <Component id="confirmButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="BackButton" min="-2" max="-2" attributes="0"/>
+              <Component id="backButton" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="58" max="-2" attributes="0"/>
           </Group>
       </Group>
@@ -84,22 +84,22 @@
         <Property name="text" type="java.lang.String" value="Nh&#x1ead;p l&#x1ea1;i m&#x1ead;t kh&#x1ea9;u:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="ConfirmButton">
+    <Component class="javax.swing.JButton" name="confirmButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="X&#xf3;a t&#xe0;i kho&#x1ea3;n"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="ConfirmButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="confirmButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="err">
     </Component>
-    <Component class="javax.swing.JToggleButton" name="BackButton">
+    <Component class="javax.swing.JToggleButton" name="backButton">
       <Properties>
         <Property name="text" type="java.lang.String" value="Quay l&#x1ea1;i"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="BackButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backButtonActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel2">

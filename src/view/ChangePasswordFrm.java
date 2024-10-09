@@ -26,7 +26,7 @@ public class ChangePasswordFrm extends javax.swing.JFrame {
         initComponents();
     }
     
-    public void showErr(String er) {
+    public void notify(String er) {
         err.setText(er);
     }
 
@@ -44,8 +44,8 @@ public class ChangePasswordFrm extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         oldPass = new javax.swing.JPasswordField();
         newPass = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        changePassBtn = new javax.swing.JButton();
+        turnBackBtn = new javax.swing.JButton();
         err = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
 
@@ -57,17 +57,17 @@ public class ChangePasswordFrm extends javax.swing.JFrame {
 
         jLabel2.setText("Mật khẩu mới:");
 
-        jButton1.setText("Thay đổi mật khẩu");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        changePassBtn.setText("Thay đổi mật khẩu");
+        changePassBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                changePassBtnActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Quay lại");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        turnBackBtn.setText("Quay lại");
+        turnBackBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                turnBackBtnActionPerformed(evt);
             }
         });
 
@@ -87,8 +87,8 @@ public class ChangePasswordFrm extends javax.swing.JFrame {
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(jButton1))
+                                .addComponent(turnBackBtn, javax.swing.GroupLayout.PREFERRED_SIZE, 128, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(changePassBtn))
                             .addGroup(layout.createSequentialGroup()
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addComponent(jLabel1)
@@ -125,9 +125,9 @@ public class ChangePasswordFrm extends javax.swing.JFrame {
                     .addComponent(jLabel2)
                     .addComponent(newPass, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(36, 36, 36)
-                .addComponent(jButton1)
+                .addComponent(changePassBtn)
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(turnBackBtn)
                 .addContainerGap(51, Short.MAX_VALUE))
         );
 
@@ -136,20 +136,20 @@ public class ChangePasswordFrm extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void changePassBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_changePassBtnActionPerformed
         // TODO add your handling code here:
         String oldpass = String.copyValueOf(oldPass.getPassword());
         String newpass = String.copyValueOf(newPass.getPassword());
         Client.socketHandle.write("change-password-request " + this.adminName + " " + oldpass + " " + newpass);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_changePassBtnActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void turnBackBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_turnBackBtnActionPerformed
         // TODO add your handling code here:
         int x = getLocation().x;
         int y = getLocation().y;
         Client.CloseView(Client.View.CHANGEPASSSWORD);
         Client.OpenView(Client.View.DASHBOARD, adminName, x, y);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_turnBackBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -187,15 +187,15 @@ public class ChangePasswordFrm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton changePassBtn;
     private javax.swing.JLabel err;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel nameOfAdmin;
     private javax.swing.JPasswordField newPass;
     private javax.swing.JPasswordField oldPass;
+    private javax.swing.JButton turnBackBtn;
     // End of variables declaration//GEN-END:variables
 
 }

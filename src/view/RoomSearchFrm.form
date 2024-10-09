@@ -46,14 +46,14 @@
                   <Group type="102" alignment="1" attributes="0">
                       <Component id="nameOfAdmin" min="-2" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
-                      <Component id="backButton" min="-2" pref="86" max="-2" attributes="0"/>
+                      <Component id="backBtn" min="-2" pref="86" max="-2" attributes="0"/>
                       <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
                       <Group type="103" groupAlignment="0" attributes="0">
                           <Group type="102" alignment="0" attributes="0">
                               <EmptySpace min="-2" pref="251" max="-2" attributes="0"/>
-                              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+                              <Component id="searchBtn" min="-2" max="-2" attributes="0"/>
                           </Group>
                           <Component id="jLabel1" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="1" attributes="0">
@@ -111,9 +111,9 @@
           </Group>
           <Group type="102" alignment="1" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
-              <Component id="deleteRoomButton" min="-2" max="-2" attributes="0"/>
+              <Component id="deleteRoomBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="modifyRoomButton" min="-2" max="-2" attributes="0"/>
+              <Component id="modifyRoomBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="144" max="-2" attributes="0"/>
           </Group>
           <Group type="102" alignment="0" attributes="0">
@@ -129,7 +129,7 @@
               <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="nameOfAdmin" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="backButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="backBtn" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
@@ -158,7 +158,7 @@
                   <Component id="floorChoose" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
-              <Component id="jButton1" min="-2" max="-2" attributes="0"/>
+              <Component id="searchBtn" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="20" max="-2" attributes="0"/>
               <Component id="jLabel8" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
@@ -167,8 +167,8 @@
               <Component id="roomName" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="modifyRoomButton" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="deleteRoomButton" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="modifyRoomBtn" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="deleteRoomBtn" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace min="-2" pref="14" max="-2" attributes="0"/>
           </Group>
@@ -184,12 +184,12 @@
         <AuxValue name="JavaCodeGenerator_AddingCodePost" type="java.lang.String" value="nameOfAdmin.setText(&quot;admin: &quot; + this.adminName);"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="backButton">
+    <Component class="javax.swing.JButton" name="backBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="Quay l&#x1ea1;i"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="backBtnActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="jLabel1">
@@ -262,12 +262,12 @@
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>
     </Component>
-    <Component class="javax.swing.JButton" name="jButton1">
+    <Component class="javax.swing.JButton" name="searchBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="T&#xec;m ki&#x1ebf;m"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="searchBtnActionPerformed"/>
       </Events>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">
@@ -326,12 +326,12 @@
         <Property name="text" type="java.lang.String" value="Danh s&#xe1;ch ph&#xf2;ng:"/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="modifyRoomButton">
+    <Component class="javax.swing.JButton" name="modifyRoomBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="S&#x1eed;a ph&#xf2;ng"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modifyRoomButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="modifyRoomBtnActionPerformed"/>
       </Events>
     </Component>
     <Component class="javax.swing.JLabel" name="roomName">
@@ -339,12 +339,12 @@
         <Property name="text" type="java.lang.String" value="B&#x1ea1;n ch&#x1b0;a ch&#x1ecd;n ph&#xf2;ng n&#xe0;o."/>
       </Properties>
     </Component>
-    <Component class="javax.swing.JButton" name="deleteRoomButton">
+    <Component class="javax.swing.JButton" name="deleteRoomBtn">
       <Properties>
         <Property name="text" type="java.lang.String" value="X&#xf3;a ph&#xf2;ng"/>
       </Properties>
       <Events>
-        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteRoomButtonActionPerformed"/>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="deleteRoomBtnActionPerformed"/>
       </Events>
     </Component>
   </SubComponents>

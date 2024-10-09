@@ -26,7 +26,7 @@ public class FloorSearchFrm extends javax.swing.JFrame {
         initComponents();
     }
 
-    public void showErr(String er) {
+    public void notify(String er) {
         JOptionPane.showMessageDialog(this, er, "Thông báo", JOptionPane.INFORMATION_MESSAGE);
     }
 
@@ -43,7 +43,7 @@ public class FloorSearchFrm extends javax.swing.JFrame {
         String[] lst = s.split("\\$");
         int size = lst.length;
         if (size == 1) {
-            showErr("Không có phòng cần tìm!!");
+            notify("Không có phòng cần tìm!!");
             return;
         }
         for (int i = 1; i < size; i += 2) {
@@ -80,10 +80,10 @@ public class FloorSearchFrm extends javax.swing.JFrame {
         backButton = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         tangDaChon = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        modifyFloorBtn = new javax.swing.JButton();
+        deleteFloorBtn = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
-        findRoom = new javax.swing.JButton();
+        floorSearch = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         floorTable = new javax.swing.JTable();
         themTangBtn = new javax.swing.JButton();
@@ -104,17 +104,17 @@ public class FloorSearchFrm extends javax.swing.JFrame {
 
         tangDaChon.setText("Bạn hãy click vào một tầng trong bảng.");
 
-        jButton1.setText("Sửa tầng");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        modifyFloorBtn.setText("Sửa tầng");
+        modifyFloorBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                modifyFloorBtnActionPerformed(evt);
             }
         });
 
-        jButton2.setText("Xóa tầng");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        deleteFloorBtn.setText("Xóa tầng");
+        deleteFloorBtn.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                deleteFloorBtnActionPerformed(evt);
             }
         });
 
@@ -124,10 +124,10 @@ public class FloorSearchFrm extends javax.swing.JFrame {
             }
         });
 
-        findRoom.setText("Tìm kiếm");
-        findRoom.addActionListener(new java.awt.event.ActionListener() {
+        floorSearch.setText("Tìm kiếm");
+        floorSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                findRoomActionPerformed(evt);
+                floorSearchActionPerformed(evt);
             }
         });
 
@@ -175,9 +175,9 @@ public class FloorSearchFrm extends javax.swing.JFrame {
                             .addGap(112, 112, 112)
                             .addComponent(themTangBtn)
                             .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                            .addComponent(jButton1)
+                            .addComponent(modifyFloorBtn)
                             .addGap(12, 12, 12)
-                            .addComponent(jButton2)
+                            .addComponent(deleteFloorBtn)
                             .addGap(42, 42, 42))
                         .addGroup(layout.createSequentialGroup()
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
@@ -186,7 +186,7 @@ public class FloorSearchFrm extends javax.swing.JFrame {
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 182, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                    .addComponent(findRoom)
+                                    .addComponent(floorSearch)
                                     .addGap(0, 0, Short.MAX_VALUE))
                                 .addGroup(layout.createSequentialGroup()
                                     .addComponent(nameOfAdmin)
@@ -215,15 +215,15 @@ public class FloorSearchFrm extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(findRoom))
+                    .addComponent(floorSearch))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
                 .addComponent(tangDaChon)
                 .addGap(34, 34, 34)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1)
-                    .addComponent(jButton2)
+                    .addComponent(modifyFloorBtn)
+                    .addComponent(deleteFloorBtn)
                     .addComponent(themTangBtn))
                 .addGap(48, 48, 48))
         );
@@ -241,30 +241,30 @@ public class FloorSearchFrm extends javax.swing.JFrame {
         Client.OpenView(Client.View.DASHBOARD, adminName, x, y);
     }//GEN-LAST:event_backButtonActionPerformed
 
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+    private void deleteFloorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_deleteFloorBtnActionPerformed
         // TODO add your handling code here:
         if (floorName == null) {
-            showErr("Hãy click một tầng trong bảng!");
+            notify("Hãy click một tầng trong bảng!");
             return;
         }
         String matKhau = JOptionPane.showInputDialog(this, "Nhập mật khẩu tài khoản để xác nhận!", "Mật khẩu của bạn là!", JOptionPane.QUESTION_MESSAGE);
         Client.socketHandle.write("delete-floor-request$" + adminName + "$" + matKhau + "$" + floorName);
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_deleteFloorBtnActionPerformed
 
     private void jTextField1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextField1ActionPerformed
 
-    private void findRoomActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_findRoomActionPerformed
+    private void floorSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_floorSearchActionPerformed
         // TODO add your handling code here:
         String floorFind = jTextField1.getText();
         if (floorFind.equals("")) {
-            showErr("Hãy nhập vào thanh tìm kiếm!!");
+            notify("Hãy nhập vào thanh tìm kiếm!!");
             Client.socketHandle.write("get-all-floor-request");
         } else {
             Client.socketHandle.write("find-floor-request$" + floorFind);
         }
-    }//GEN-LAST:event_findRoomActionPerformed
+    }//GEN-LAST:event_floorSearchActionPerformed
 
     private void themTangBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_themTangBtnActionPerformed
         // TODO add your handling code here:
@@ -274,16 +274,16 @@ public class FloorSearchFrm extends javax.swing.JFrame {
         Client.socketHandle.write("get-floor-close-request");
     }//GEN-LAST:event_themTangBtnActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void modifyFloorBtnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_modifyFloorBtnActionPerformed
         // TODO add your handling code here:
         if (floorName == null) {
-            showErr("Hãy click vào một phòng!");
+            notify("Hãy click vào một phòng!");
             return;
         }
         Client.modifyFloorFrm = new ModifyFloorFrm(this.floorName);
         Client.modifyFloorFrm.setLocation(this.getLocation());
         Client.modifyFloorFrm.setVisible(true);
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_modifyFloorBtnActionPerformed
 
     /**
      * @param args the command line arguments
@@ -329,14 +329,14 @@ public class FloorSearchFrm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton backButton;
-    private javax.swing.JButton findRoom;
+    private javax.swing.JButton deleteFloorBtn;
+    private javax.swing.JButton floorSearch;
     private javax.swing.JTable floorTable;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTextField jTextField1;
+    private javax.swing.JButton modifyFloorBtn;
     private javax.swing.JLabel nameOfAdmin;
     private javax.swing.JLabel tangDaChon;
     private javax.swing.JButton themTangBtn;
