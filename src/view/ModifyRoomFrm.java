@@ -62,7 +62,7 @@ public class ModifyRoomFrm extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         roomNameTxt.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        roomNameTxt.setText("Tên phòng:");
+        roomNameTxt.setText("Sửa phòng:");
 
         jLabel1.setText("Tên mới:");
 
