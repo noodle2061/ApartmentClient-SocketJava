@@ -139,7 +139,7 @@ public class LoginFrm extends javax.swing.JFrame {
             
         } catch (Exception e) {
         }
-    }//GEN-LAST:event_submitButtonActionPerformed
+    }
 
     private void registerButtonActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_registerButtonActionPerformed
         // TODO add your handling code here:
